@@ -38,8 +38,8 @@ export default function getContactListTemplate() {
       <section class="w-2/3 p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold mb-4">Contacts List</h2>
-          <p class="text-gray-600 mb-4">
-            Contacts Count : <span class="font-bold">xxx</span>
+          <p class="text-gray-600 mb-4 contacts-count">
+            Contacts Count :<strong> </strong> <span class="font-bold  "></span>
           </p>
         </div>
 

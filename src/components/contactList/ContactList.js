@@ -13,10 +13,19 @@ export default class ContactList {
     this.contacts = contacts.map((contact) => new Contacts(contact));
     this.render();
   }
+  getContactsCount() {
+    return this.contacts.length;
+  }
+  renderContactsCount() {
+    this.domElement.querySelector(".contacts-count span").innerText =
+      this.getContactsCount();
+  }
+
   render() {
-    this.domElement.innerHTML = getContactListTemplate(this);
+    this.domElement.innerHTML = getContactListTemplate();
     this.contacts.forEach((contact) =>
       contact.render(this.domElement.querySelector(".contacts-list"))
     );
+    this.renderContactsCount();
   }
 }
