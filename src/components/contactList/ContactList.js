@@ -1,6 +1,6 @@
 import DB from "../../DB";
 import Contacts from "../contact/Contact";
-import getContactListTemplate from "./template";
+import getContactListTemplate from "../contactList/template";
 export default class ContactList {
   constructor(data) {
     this.domElement = document.querySelector(data.el);
@@ -16,7 +16,7 @@ export default class ContactList {
   render() {
     this.domElement.innerHTML = getContactListTemplate(this);
     this.contacts.forEach((contact) =>
-      contact.render(this.domElement.querySelector)
+      contact.render(this.domElement.querySelector(".contacts-list"))
     );
   }
 }

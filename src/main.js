@@ -1,4 +1,4 @@
-import ContactList from "./components/contactList;";
+import ContactList from "./components/contactList/ContactList.js";
 
 new ContactList({
   el: "#app",

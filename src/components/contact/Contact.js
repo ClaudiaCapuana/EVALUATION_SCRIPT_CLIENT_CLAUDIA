@@ -5,11 +5,13 @@ export default class Contacts {
     this.firstname = data.firstname;
     this.lastname = data.lastname;
     this.email = data.email;
-    this.createdAt = data.createdAt;
+    this.createdAt = data.creayedAt;
+    this.domElement = null;
   }
-  render() {
-    const template = document.createElement("tr");
+  render(el) {
+    const template = document.createElement("template");
     template.innerHTML = getContactTemplate(this);
-    el.append(template);
+    this.domElement = template.content.firstElementChild;
+    el.append(this.domElement);
   }
 }
