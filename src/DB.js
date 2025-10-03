@@ -27,4 +27,17 @@ export default class DB {
     });
     return response.json();
   }
+
+  static async updateOne(contact) {
+    const response = await fetch(this.apiUrl + "contacts/" + contact.id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: contact.firstname,
+        lastname: contact.lastname,
+        email: contact.email,
+      }),
+    });
+    return response.json();
+  }
 }

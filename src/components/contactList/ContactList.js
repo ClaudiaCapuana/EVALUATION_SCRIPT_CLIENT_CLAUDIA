@@ -1,5 +1,5 @@
 import DB from "../../DB";
-import Contacts from "../contact/Contact";
+import Contact from "../contact/Contact";
 import getContactListTemplate from "../contactList/template";
 export default class ContactList {
   constructor(data) {
@@ -11,7 +11,7 @@ export default class ContactList {
   }
   async loadContacts() {
     const contacts = await DB.findAll();
-    this.contacts = contacts.map((contact) => new Contacts(contact));
+    this.contacts = contacts.map((contact) => new Contact(contact));
     this.render();
   }
   getContactsCount() {
@@ -33,7 +33,7 @@ export default class ContactList {
     //ajouter dans la DB
     const contact = await DB.create(data);
     // ajouter à this.contacts
-    const newContact = new Contacts(contact);
+    const newContact = new Contact(contact);
     this.contacts.push(newContact);
     //ajouter dans le DOM
     newContact.render(this.listDomElement);
@@ -64,6 +64,9 @@ export default class ContactList {
           lastname: this.domElement.querySelector(".lastname").value,
           email: this.domElement.querySelector(".email").value,
         });
+        this.domElement.querySelector(".firstname").value = "";
+        this.domElement.querySelector(".lastname").value = "";
+        this.domElement.querySelector(".email").value = "";
       });
   }
 }
