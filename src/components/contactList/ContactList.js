@@ -41,6 +41,20 @@ export default class ContactList {
     this.renderContactsCount();
   }
 
+  async deleteOneById(id) {
+    //supprimer de la DB
+    const resp = await DB.deleteOneById(id);
+    //Supprimer de this.contacts
+    this.contacts.splice(
+      this.contacts.findIndex((contact) => contact.id == id),
+      1
+    );
+    //supprimer du DOM
+    this.domElement.querySelector(`[data-id="${id}"]`).remove();
+    //relancer le render des contacts count
+    this.renderContactsCount();
+  }
+
   initEvents() {
     this.domElement
       .querySelector(".add-contact-btn")
