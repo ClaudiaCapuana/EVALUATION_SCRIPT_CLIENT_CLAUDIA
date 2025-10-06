@@ -25,7 +25,9 @@ export default class ContactList {
   render() {
     this.domElement.innerHTML = getContactListTemplate();
     this.listDomElement = this.domElement.querySelector(".contacts-list");
-    this.contacts.forEach((contact) => contact.render(this.listDomElement));
+    this.contacts.forEach((contact) =>
+      this.listDomElement.append(contact.render())
+    );
     this.renderContactsCount();
     this.initEvents();
   }
@@ -36,7 +38,7 @@ export default class ContactList {
     const newContact = new Contact(contact);
     this.contacts.push(newContact);
     //ajouter dans le DOM
-    newContact.render(this.listDomElement);
+    this.listDomElement.append(newContact.render());
     //relancer le render des contacts count
     this.renderContactsCount();
   }

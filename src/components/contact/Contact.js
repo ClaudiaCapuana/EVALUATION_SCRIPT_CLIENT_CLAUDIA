@@ -9,14 +9,15 @@ export default class Contact {
     this.createdAt = data.createdAt;
     this.domElement = null;
   }
-  render(el) {
+  render() {
     const template = document.createElement("template");
     template.innerHTML = getContactTemplate(this);
     this.domElement = template.content.firstElementChild;
-    el.append(this.domElement);
     this.initEvents();
+    return this.domElement;
   }
 
+  //FEATURE UPDATE
   async update(data) {
     //je modifie dans le tableau this.contacts
     this.firstname = data.inputFirstname;
